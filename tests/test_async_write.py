@@ -29,7 +29,13 @@ async def create_async_table() -> None:
 
     await conn.execute(
         """
-        CREATE TABLE IF NOT EXISTS test_async_write(
+        DROP TABLE IF EXISTS test_async_write
+        """
+    )
+
+    await conn.execute(
+        """
+        CREATE TABLE test_async_write(
             id serial PRIMARY KEY,
             x1 float,
             x2 float
