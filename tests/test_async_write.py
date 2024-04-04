@@ -5,6 +5,7 @@ import sys
 
 import asyncpg
 import numpy as np
+import pytest
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from config import Config
@@ -17,7 +18,8 @@ LOGGER.info(os.getenv("POSTGRES_USER"))
 config = Config()
 
 
-async def create_async_table() -> None:
+@pytest.mark.asyncio
+async def test_create_async_table() -> None:
     LOGGER.info("Connecting to Postgres...")
 
     conn = await asyncpg.connect(
@@ -52,7 +54,8 @@ async def create_async_table() -> None:
     LOGGER.info("Connection closed")
 
 
-async def write_data_async():
+@pytest.mark.asyncio
+async def test_write_data_async():
     conn = await asyncpg.connect(
         user=config.postgres_user,
         password=config.postgres_password,
@@ -74,5 +77,5 @@ async def write_data_async():
     await conn.close()
 
 
-asyncio.run(create_async_table())
-asyncio.run(write_data_async())
+asyncio.run(test_create_async_table())
+asyncio.run(test_write_data_async())
