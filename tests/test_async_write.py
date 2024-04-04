@@ -1,4 +1,3 @@
-import asyncio
 import logging
 import os
 import sys
@@ -75,7 +74,3 @@ async def test_write_data_async():
     LOGGER.info("Finished writing")
 
     await conn.close()
-
-
-asyncio.run(test_create_async_table())
-asyncio.run(test_write_data_async())
