@@ -32,12 +32,14 @@ jobs:
       run: |
         poetry install
 
+    - name: Set PYTHONPATH
+      run: echo "PYTHONPATH=${{ github.workspace }}" >> $GITHUB_ENV
+
     - name: Run tests
       env:
         POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
         POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-        PYTHONPATH: ${{ github.workspace }}
       run: |
         poetry run pytest tests/
