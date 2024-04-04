@@ -12,6 +12,8 @@ from config import Config
 logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger("fastapi_ml_template")
 
+LOGGER.info(os.getenv("POSTGRES_USER"))
+
 config = Config()
 
 
