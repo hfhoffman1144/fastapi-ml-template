@@ -3,7 +3,7 @@ import numpy as np
 import pytest
 import pytest_asyncio
 
-from config import Config
+from app.config import Config
 
 CONFIG = Config()
 

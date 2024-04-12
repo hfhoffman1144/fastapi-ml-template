@@ -6,3 +6,4 @@ class Config(BaseSettings):
     postgres_user: str
     postgres_db: str
     postgres_password: str
+    text_model: str
